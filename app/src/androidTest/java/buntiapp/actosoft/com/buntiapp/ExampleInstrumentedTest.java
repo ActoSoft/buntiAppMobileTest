@@ -1,4 +1,4 @@
-package com.example.actosoft.buntiapp;
+package buntiapp.actosoft.com.buntiapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -17,10 +17,10 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Test
-    public void useAppContext() throws Exception {
+    public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.actosoft.buntiapp", appContext.getPackageName());
+        assertEquals("buntiapp.actosoft.com.buntiapp", appContext.getPackageName());
     }
 }
