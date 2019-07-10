@@ -3,7 +3,9 @@ package buntiapp.actosoft.com.buntiapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,12 +16,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     private LocationManager ubicacion;
-    TextView longitud, latitud;
+    TextView longitud, latitud, direccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         longitud = (TextView) findViewById(R.id.txtLongitud);
         latitud = (TextView) findViewById(R.id.txtLatitud);
+        direccion = (TextView) findViewById(R.id.txtDireccion);
 
         ubicacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location loc = ubicacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -100,6 +105,19 @@ public class MainActivity extends AppCompatActivity {
 
             String lat = "Mi latitud es: " + location.getLatitude();
             String lon = "Mi longitud es: " + location.getLongitude();
+
+            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            try {
+                List<Address> direccion1 = geocoder.getFromLocation(-location.getLatitude(), location.getLongitude(), 1);
+//                System.out.println(direccion1.get(0).getAddressLine(0));
+//                System.out.println(direccion1.get(0).getCountryName());
+//                System.out.println(direccion1.get(0).getLocality());
+//                System.out.println(direccion1.get(0).getPostalCode());
+                direccion.setText(direccion1.get(0).getAddressLine(0));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             latitud.setText(lat);
             longitud.setText(lon);
 
