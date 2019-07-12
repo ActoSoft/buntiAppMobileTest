@@ -1,4 +1,4 @@
-package buntiapp.actosoft.com.buntiapp;
+package buntiapp.actosoft.com.buntiappmobile;
 
 import android.Manifest;
 import android.content.Context;
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         localizacion();
-//        listaProviders();
 //        listaProviders();
 //        mejorCriterio();
 //        estadoGPS();
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         if (ubicacion != null) {
             Log.d("Latitud", String.valueOf(loc.getLatitude()));
             Log.d("Longitud", String.valueOf(loc.getLongitude()));
-//            longitud.setText("LONGITUD: " + String.valueOf(loc.getLongitude()));
-//            latitud.setText("LATITUD: " + String.valueOf(loc.getLatitude()));
+            longitud.setText("LONGITUD: " + String.valueOf(loc.getLongitude()));
+            latitud.setText("LATITUD: " + String.valueOf(loc.getLatitude()));
         }
     }
 
@@ -108,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
             try {
-                List<Address> direccion1 = geocoder.getFromLocation(-location.getLatitude(), location.getLongitude(), 1);
-//                System.out.println(direccion1.get(0).getAddressLine(0));
-//                System.out.println(direccion1.get(0).getCountryName());
-//                System.out.println(direccion1.get(0).getLocality());
-//                System.out.println(direccion1.get(0).getPostalCode());
+                List<Address> direccion1 = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                System.out.println("Direccion: " + direccion1.get(0).getAddressLine(0));
+                System.out.println(direccion1.get(0).getCountryName() + "----------------------------------------------------------------------------------");
+                System.out.println(direccion1.get(0).getLocality() + "----------------------------------------------------------------------------------");
+                System.out.println(direccion1.get(0).getPostalCode() + "----------------------------------------------------------------------------------");
                 direccion.setText(direccion1.get(0).getAddressLine(0));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -138,5 +138,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 }

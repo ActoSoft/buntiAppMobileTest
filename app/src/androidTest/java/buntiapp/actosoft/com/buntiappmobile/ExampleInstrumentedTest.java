@@ -1,4 +1,4 @@
-package buntiapp.actosoft.com.buntiapp;
+package buntiapp.actosoft.com.buntiappmobile;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("buntiapp.actosoft.com.buntiapp", appContext.getPackageName());
+        assertEquals("buntiapp.actosoft.com.buntiappmobile", appContext.getPackageName());
     }
 }

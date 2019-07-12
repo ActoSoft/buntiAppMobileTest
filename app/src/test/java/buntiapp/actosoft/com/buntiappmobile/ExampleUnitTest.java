@@ -1,4 +1,4 @@
-package buntiapp.actosoft.com.buntiapp;
+package buntiapp.actosoft.com.buntiappmobile;
 
 import org.junit.Test;
 
